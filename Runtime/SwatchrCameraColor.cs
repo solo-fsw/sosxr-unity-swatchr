@@ -10,13 +10,14 @@ namespace swatchr
         public Camera swatchingCamera;
 
 
-        public override void Apply()
+        protected override void Apply()
         {
             if (swatchingCamera == null)
             {
                 swatchingCamera = GetComponent<Camera>();
             }
 
+            swatchingCamera.clearFlags = CameraClearFlags.SolidColor;
             swatchingCamera.backgroundColor = swatchrColor.color;
         }
     }
