@@ -1,18 +1,18 @@
 {
-    "name": "swatchr.Editor",
-    "rootNamespace": "",
-    "references": [
-        "GUID:ad6f1bc22ceba473398fdcf88f4bbfe3"
-    ],
-    "includePlatforms": [
-        "Editor"
-    ],
-    "excludePlatforms": [],
-    "allowUnsafeCode": false,
-    "overrideReferences": false,
-    "precompiledReferences": [],
-    "autoReferenced": true,
-    "defineConstraints": [],
-    "versionDefines": [],
-    "noEngineReferences": false
+  "name": "swatchr.Editor",
+  "rootNamespace": "",
+  "references": [
+    "GUID:ad6f1bc22ceba473398fdcf88f4bbfe3"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
 }

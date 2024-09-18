@@ -1,28 +1,35 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace swatchr {
-	[ExecuteInEditMode]
-	public abstract class SwatchrColorApplier : MonoBehaviour {
-		public SwatchrColor swatchrColor;
 
-		void OnDestroy() {
-			swatchrColor.OnColorChanged -= Apply;
-		}
+namespace swatchr
+{
+    [ExecuteInEditMode]
+    public abstract class SwatchrColorApplier : MonoBehaviour
+    {
+        public SwatchrColor swatchrColor;
 
-		void OnDisable() {
-			swatchrColor.OnColorChanged -= Apply;
-		}
 
-		void OnEnable() {
-			if (swatchrColor == null) {
-				swatchrColor = new SwatchrColor();
-			}
-			swatchrColor.OnColorChanged += Apply;
-			swatchrColor.OnEnable();
-		}
+        private void OnDestroy()
+        {
+            swatchrColor.OnColorChanged -= Apply;
+        }
 
-		public abstract void Apply();
-	}
+
+        private void OnDisable()
+        {
+            swatchrColor.OnColorChanged -= Apply;
+        }
+
+
+        private void OnEnable()
+        {
+            swatchrColor ??= new SwatchrColor();
+
+            swatchrColor.OnColorChanged += Apply;
+            swatchrColor.OnEnable();
+        }
+
+
+        public abstract void Apply();
+    }
 }
