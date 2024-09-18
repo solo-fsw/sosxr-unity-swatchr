@@ -14,28 +14,30 @@ Swatchr allows Unity developers to store color palettes inside scriptable object
 * Nice editor UI
 * Comes with the AAP-Splendor-128 color palette designed by [@AdigunPolack](https://twitter.com/adigunpolack/status/993524761019015168)
 
-# How To
-
 ## Creating a Swatch
-Create an empty Swatch by right clicking in the Project Window and going to Swatchr -> Create New Swatch. Click on the .asset file to view it's Editor UI in the Inspector. Add colors to it by clicking the + button. Click on the color next to the selected color to use Unitys color picker to pick a color.
+Create an empty Swatch by going to SOSXR -> Create New Swatch. Click on the .asset file to view it's Editor UI in the Inspector. Add colors to it by clicking the + button. Click on the color next to the selected color to use Unity's color picker to pick a color.
 
-## Importing a .ASE file
-Right click in the Project Window and go to Swatchr -> Import ASE File (Browse...). Use the file selector to select the .ase file. A swatch will be created.
+By default each SwatchrColorApplier derived class will try to load a swatch called "Project Wide Swatch". This will be the default swatch for all components. 
 
-## Exporting to Unity's Color Picker
-Select the swatch you want to export. Hit the Export To Color Picker Presets button. It will create a file with the .colors extension, and place it in an Editor/ folder. You can move that file, but it has to be in a folder path with Editor/ in it. Now go to the Unity Color Picker and click the dropdown to the top right of the color grid. Select the name of the Swatch you just exported. Now that swatch is available in Unity's default color picker.
+Create the color-palette specific swatches, and name them accordingly.Then, use the Replace button to swap out the colors in the Project Wide Swatch for the ones to your liking. This will update all the references to that swatch in the project. You may (sometimes) need to hit Play to see the changes.
 
-## Importing a PNG
-You can import a palette from a png by right clicking in your Project Window and going to Swatchr -> Import Swatch From Texture (Browse...). Note that every pixel in the png will become a color in the Swatch. There is no intelligent palette picking.
+## Using Swatches
+### Renderer
+Add a SwatchrRenderer component to a GameObject with a MeshRenderer or SpriteRenderer. Now you can select a color from the Swatch by selecting the key in the SwatchrColor field. 
+### Light
+Add a SwatchrLight component to a GameObject with a Light component. Now you can select a color from the Swatch by selecting the key in the SwatchrColor field.
+### Ambient Light
+Add a SwatchrAmbientLightColor component to a GameObject. Now you can select a color from the Swatch by selecting the key in the SwatchrColor field. It will change the ambient light color of the scene. You can see this in the Lighting window -> Ambient Color.
 
-## Importing MagicaVoxel palettes
-MagicaVoxel exports it's palettes with color profiles embedded in the png. Unity does not respect these color profiles. To work around this, export your model using the export .fbx option and then use that png file to import your swatch. Once you have the palette exported from this method, right click in your Project Window and go to Swatchr -> Import Swatch From Texture (Browse...).
+## URP Shaders
+Use the URP versions for Universal Render Pipeline projects. Use the other versions for Built-In Render Pipeline projects.
 
 ## Swapping Swatches
-Create a swatch for your project, eg) "MySwatch", and then use that swatch everywhere. Now make a backup of that swatch and create alternative swatches. Now use the Replace button on MySwatch to swap color palettes.
+Create a swatch for your project, eg) "Project Wide Swatch", and then use that swatch everywhere. Now duplicate that swatch and create alternative swatches with the same number of col. Now use the Replace button on MySwatch to swap color palettes.
 
-## Selecting Materials
-Try the Legacy -> Diffuse material to get a pure, clean, low poly look.
+## Finding Color Palettes
+For instance here at [Color Hunt](https://colorhunt.co/).
+
 
 # Technical Details
 * Swatch.cs is a scriptable object that contains an array of colors.
