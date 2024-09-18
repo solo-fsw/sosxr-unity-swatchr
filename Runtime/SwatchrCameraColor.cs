@@ -16,9 +16,20 @@ namespace swatchr
             {
                 swatchingCamera = GetComponent<Camera>();
             }
-
+            
             swatchingCamera.clearFlags = CameraClearFlags.SolidColor;
             swatchingCamera.backgroundColor = swatchrColor.color;
+        }
+
+
+        protected override void OnDisable()
+        {
+            base.OnDisable();
+
+            if (swatchingCamera != null)
+            {
+                swatchingCamera.clearFlags = CameraClearFlags.Skybox;
+            }
         }
     }
 }

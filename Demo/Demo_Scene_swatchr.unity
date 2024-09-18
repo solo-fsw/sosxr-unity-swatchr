@@ -20,9 +20,9 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.22352941, g: 0.24313726, b: 0.27450982, a: 1}
-  m_AmbientEquatorColor: {r: 0, g: 0.6784314, b: 0.70980394, a: 1}
-  m_AmbientGroundColor: {r: 0.93333334, g: 0.93333334, b: 0.93333334, a: 1}
+  m_AmbientSkyColor: {r: 0.6431373, g: 0.74509805, b: 0.48235294, a: 1}
+  m_AmbientEquatorColor: {r: 0.37254903, g: 0.5529412, b: 0.30588236, a: 1}
+  m_AmbientGroundColor: {r: 0.15686275, g: 0.32941177, b: 0.1882353, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 1
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
@@ -283,7 +283,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.13333334, g: 0.15686275, b: 0.19215687, a: 1}
+  m_BackGroundColor: {r: 0.8980392, g: 0.8509804, b: 0.7137255, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -430,7 +430,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0, g: 0.6784314, b: 0.70980394, a: 1}
+  m_Color: {r: 0.37254903, g: 0.5529412, b: 0.30588236, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -612,12 +612,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 637868702}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 7.1695, y: 7.1695, z: 7.1695}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1560119696}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &637868707
 MonoBehaviour:
@@ -1088,6 +1088,7 @@ Transform:
   - {fileID: 1483671780}
   - {fileID: 108466366}
   - {fileID: 712403353}
+  - {fileID: 637868706}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1732043403
@@ -1175,10 +1176,10 @@ MonoBehaviour:
   equatorColorIndex: 2
   groundColorIndex: 3
   swatchColors:
-  - {r: 0.13333334, g: 0.15686275, b: 0.19215687, a: 1}
-  - {r: 0.22352941, g: 0.24313726, b: 0.27450982, a: 1}
-  - {r: 0, g: 0.6784314, b: 0.70980394, a: 1}
-  - {r: 0.93333334, g: 0.93333334, b: 0.93333334, a: 1}
+  - {r: 0.8980392, g: 0.8509804, b: 0.7137255, a: 1}
+  - {r: 0.6431373, g: 0.74509805, b: 0.48235294, a: 1}
+  - {r: 0.37254903, g: 0.5529412, b: 0.30588236, a: 1}
+  - {r: 0.15686275, g: 0.32941177, b: 0.1882353, a: 1}
 --- !u!4 &1886909146
 Transform:
   m_ObjectHideFlags: 0
@@ -1325,6 +1326,5 @@ SceneRoots:
   - {fileID: 217739715}
   - {fileID: 869071671}
   - {fileID: 1560119696}
-  - {fileID: 637868706}
   - {fileID: 1732043404}
   - {fileID: 1886909146}

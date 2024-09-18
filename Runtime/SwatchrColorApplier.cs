@@ -29,7 +29,7 @@ namespace swatchr
         }
 
 
-        private void OnDisable()
+        protected virtual void OnDisable()
         {
             if (swatchrColor != null)
             {
