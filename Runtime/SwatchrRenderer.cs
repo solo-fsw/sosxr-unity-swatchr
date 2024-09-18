@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 
 
-// SwatchrRenderer
-//  Applies a SwatchrColor in OnEnable to the connected Renderer's material.
-//  Does this by setting "_Color" on the renderer's Material Property Block
 namespace swatchr
 {
+    /// <summary>
+    ///     Only use in Built-In Render Pipeline. Use URP version for URP.
+    /// </summary>
     [RequireComponent(typeof(Renderer))]
     public class SwatchrRenderer : SwatchrColorApplier
     {
@@ -16,7 +16,7 @@ namespace swatchr
         private static int colorShaderId;
 
 
-        public override void Apply()
+        protected override void Apply()
         {
             if (mpb == null)
             {
@@ -30,6 +30,7 @@ namespace swatchr
             }
 
             mpb.SetColor(colorShaderId, swatchrColor.color);
+
             swatchingRenderer.SetPropertyBlock(mpb);
         }
     }

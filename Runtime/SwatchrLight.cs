@@ -9,7 +9,7 @@ namespace swatchr
         private Light swatchingLight;
 
 
-        public override void Apply()
+        protected override void Apply()
         {
             if (swatchingLight == null)
             {

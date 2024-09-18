@@ -31,12 +31,12 @@ using System.Threading;
 
 namespace SmartWeakEvent
 {
-	/// <summary>
-	///     A class for managing a weak event.
-	///     See http://www.codeproject.com/Articles/29922/Weak-Events-in-C
-	/// </summary>
-	/// <typeparam name="T">The delegate type of the event handlers.</typeparam>
-	public sealed class FastSmartWeakEvent<T> where T : class
+    /// <summary>
+    ///     A class for managing a weak event.
+    ///     See http://www.codeproject.com/Articles/29922/Weak-Events-in-C
+    /// </summary>
+    /// <typeparam name="T">The delegate type of the event handlers.</typeparam>
+    public sealed class FastSmartWeakEvent<T> where T : class
     {
         private volatile Delegate _raiseDelegate;
 
@@ -336,10 +336,10 @@ namespace SmartWeakEvent
     }
 
 
-	/// <summary>
-	///     Strongly-typed raise methods for FastSmartWeakEvent
-	/// </summary>
-	public static class FastSmartWeakEventRaiseExtensions
+    /// <summary>
+    ///     Strongly-typed raise methods for FastSmartWeakEvent
+    /// </summary>
+    public static class FastSmartWeakEventRaiseExtensions
     {
         public static void Raise(this FastSmartWeakEvent<EventHandler> ev, object sender, EventArgs e)
         {

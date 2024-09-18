@@ -9,7 +9,7 @@ namespace swatchr
         private ParticleSystem swatchingParticleSystem;
 
 
-        public override void Apply()
+        protected override void Apply()
         {
             if (swatchingParticleSystem == null)
             {

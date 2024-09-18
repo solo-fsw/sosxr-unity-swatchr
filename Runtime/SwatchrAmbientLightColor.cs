@@ -6,11 +6,17 @@ namespace swatchr
 {
     public class SwatchrAmbientLightColor : SwatchrColorApplier
     {
-        public override void Apply()
+        protected override void Apply()
         {
+            var triLightingColor = FindObjectOfType<SwatchrAmbientTriLightingColor>();
+            if (triLightingColor != null && triLightingColor.enabled)
+            {
+                Debug.LogWarning("[SwatchrAmbientLightColor] SwatchrAmbientTriLightingColor is present in the scene. These two cannot co-exist in the same scene. Disabling SwatchrAmbientTriLightingColor.");
+                triLightingColor.gameObject.SetActive(false);
+            }
+            
             if (RenderSettings.ambientMode != AmbientMode.Flat)
             {
-                Debug.LogWarning("[SwatchrAmbientLightColor] Ambient light mode is not set to flat. Changing it now. Change it manually in Lighting->Scene.");
                 RenderSettings.ambientMode = AmbientMode.Flat;
             }
 

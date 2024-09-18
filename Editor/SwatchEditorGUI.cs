@@ -32,7 +32,7 @@ namespace swatchr
                 // if (swatch.colors != null && swatch.colors.Length > 0) {
                 var startingRect = GUILayoutUtility.GetLastRect();
 
-                if (SwatchrPaletteDrawer.DrawColorPallete(swatch, ref colorRef, true))
+                if (SwatchrPaletteDrawer.DrawColorPalette(swatch, ref colorRef, true))
                 {
                     Repaint();
                 }

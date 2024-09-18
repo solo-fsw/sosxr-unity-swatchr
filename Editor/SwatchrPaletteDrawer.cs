@@ -12,11 +12,11 @@ namespace swatchr
         private static GUIStyle tempDrawTextureStyle;
         private static Texture2D blackTexture;
         private static Texture2D whiteTexture;
-        private static Texture2D palleteTexture;
-        private static int palleteTextureCachedHashCode;
+        private static Texture2D paletteTexture;
+        private static int paletteTextureCachedHashCode;
 
 
-        public static bool DrawColorPallete(Swatch swatch, ref int colorKey, bool drawNewColorButton)
+        public static bool DrawColorPalette(Swatch swatch, ref int colorKey, bool drawNewColorButton)
         {
             if (swatch == null)
             {
@@ -29,9 +29,9 @@ namespace swatchr
             {
                 var swatchHash = swatch.cachedTexture.GetHashCode();
 
-                if (palleteTexture == null || palleteTextureCachedHashCode != swatchHash)
+                if (paletteTexture == null || paletteTextureCachedHashCode != swatchHash)
                 {
-                    if (palleteTexture == null)
+                    if (paletteTexture == null)
                     {
                         #if SWATCHR_VERBOSE
 						Debug.LogWarning("[SwatchrPalleteDrawer] creating pallete texture because there is none");
@@ -44,13 +44,13 @@ namespace swatchr
                         #endif
                     }
 
-                    palleteTexture = textureWithColors(swatch.colors);
-                    palleteTextureCachedHashCode = swatchHash;
+                    paletteTexture = textureWithColors(swatch.colors);
+                    paletteTextureCachedHashCode = swatchHash;
                 }
             }
             else
             {
-                palleteTexture = null;
+                paletteTexture = null;
             }
 
             if (blackTexture == null)
@@ -76,9 +76,9 @@ namespace swatchr
             float heightOfPallete = 0;
             var textureRect = new Rect(lastRect.x, lastRect.y + lastRect.height, 0.0f, 0.0f);
 
-            if (palleteTexture != null)
+            if (paletteTexture != null)
             {
-                textureRect = new Rect(lastRect.x, lastRect.y + lastRect.height, palleteTexture.width * EditorGUIUtility.singleLineHeight, palleteTexture.height * EditorGUIUtility.singleLineHeight);
+                textureRect = new Rect(lastRect.x, lastRect.y + lastRect.height, paletteTexture.width * EditorGUIUtility.singleLineHeight, paletteTexture.height * EditorGUIUtility.singleLineHeight);
                 heightOfPallete = textureRect.height;
             }
 
@@ -98,10 +98,10 @@ namespace swatchr
 
             GUILayoutUtility.GetRect(clickRect.width, clickRect.height);
 
-            if (palleteTexture != null)
+            if (paletteTexture != null)
             {
-                DrawTexture(palleteTexture, textureRect);
-                DrawBlackGrid(textureRect.x, textureRect.y, swatch.colors.Length, palleteTexture.width, palleteTexture.height, (int) EditorGUIUtility.singleLineHeight, blackTexture);
+                DrawTexture(paletteTexture, textureRect);
+                DrawBlackGrid(textureRect.x, textureRect.y, swatch.colors.Length, paletteTexture.width, paletteTexture.height, (int) EditorGUIUtility.singleLineHeight, blackTexture);
             }
 
             if (drawNewColorButton)
@@ -119,7 +119,7 @@ namespace swatchr
                     var rectClickPosition = e.mousePosition - textureRect.position;
                     var cellXIndex = (int) (rectClickPosition.x / EditorGUIUtility.singleLineHeight);
                     var cellYIndex = (int) (rectClickPosition.y / EditorGUIUtility.singleLineHeight);
-                    var textureWidth = palleteTexture != null ? palleteTexture.width : 0;
+                    var textureWidth = paletteTexture != null ? paletteTexture.width : 0;
                     var clickedOnKey = cellYIndex * textureWidth + cellXIndex;
 
                     if (numColors > 0 && clickedOnKey < numColors)

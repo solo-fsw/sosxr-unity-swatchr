@@ -4,6 +4,9 @@ using Zaikman;
 
 namespace swatchr
 {
+    /// <summary>
+    ///     Only use on Built-In Render Pipeline. Use URP version for URP.
+    /// </summary>
     public class SwatchrMultiRenderer : SwatchrColorApplier
     {
         public Renderer[] renderers;
@@ -22,7 +25,7 @@ namespace swatchr
         }
 
 
-        public override void Apply()
+        protected override void Apply()
         {
             if (mpb == null)
             {

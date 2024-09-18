@@ -8,7 +8,7 @@ namespace swatchr
 {
     public static class SwatchCreator
     {
-        [MenuItem("Assets/Swatchr/Create New Swatch")]
+        [MenuItem("SOSXR/Create New Swatch")]
         public static void CreateSwatch()
         {
             var asset = ScriptableObject.CreateInstance<Swatch>();
@@ -32,7 +32,7 @@ namespace swatchr
         }
 
 
-        [MenuItem("Assets/Swatchr/Duplicate Swatch")]
+        // [MenuItem("SOSXR/Swatchr/Duplicate Swatch")]
         public static void DuplicateSwatch()
         {
             var activeObject = (Swatch) Selection.activeObject;
@@ -42,7 +42,7 @@ namespace swatchr
         }
 
 
-        [MenuItem("Assets/Swatchr/Duplicate Swatch", true)]
+        // [MenuItem("SOSXR/Swatchr/Duplicate Swatch", true)]
         public static bool ValidateDuplicateSwatch()
         {
             var activeObject = Selection.activeObject;
@@ -51,7 +51,7 @@ namespace swatchr
         }
 
 
-        [MenuItem("Assets/Swatchr/Export Swatch To Color Presets")]
+        // [MenuItem("SOSXR/Swatchr/Export Swatch To Color Presets")]
         public static void ExportToPresets()
         {
             var activeObject = (Swatch) Selection.activeObject;
@@ -59,7 +59,7 @@ namespace swatchr
         }
 
 
-        [MenuItem("Assets/Swatchr/Export Swatch To Color Presets", true)]
+        // [MenuItem("SOSXR/Swatchr/Export Swatch To Color Presets", true)]
         public static bool ValidateExportToPresets()
         {
             var activeObject = Selection.activeObject;
@@ -68,7 +68,7 @@ namespace swatchr
         }
 
 
-        [MenuItem("Assets/Swatchr/Import ASE File")]
+        // [MenuItem("SOSXR/Swatchr/Import ASE File")]
         private static void ImportSelectedASEFile()
         {
             var activeObject = Selection.activeObject;
@@ -81,7 +81,7 @@ namespace swatchr
         }
 
 
-        [MenuItem("Assets/Swatchr/Import ASE File", true)]
+        // [MenuItem("SOSXR/Swatchr/Import ASE File", true)]
         private static bool ValidateImportSelectedASEFile()
         {
             var activeObject = Selection.activeObject;
@@ -97,7 +97,7 @@ namespace swatchr
         }
 
 
-        [MenuItem("Assets/Swatchr/Import ASE File (Browse...)")]
+        // [MenuItem("SOSXR/Swatchr/Import ASE File (Browse...)")]
         private static void ImportASEFileBrowse()
         {
             var path = EditorUtility.OpenFilePanel("Swatchr Import", "", "ase");
@@ -110,7 +110,7 @@ namespace swatchr
         }
 
 
-        [MenuItem("Assets/Swatchr/Import ASE Folder Into One Swatch (Browse...)")]
+        // [MenuItem("SOSXR/Swatchr/Import ASE Folder Into One Swatch (Browse...)")]
         private static void ImportASEFolderIntoOne()
         {
             var path = EditorUtility.OpenFolderPanel("Swatchr Import Folder", "", "");
@@ -142,7 +142,7 @@ namespace swatchr
         }
 
 
-        [MenuItem("Assets/Swatchr/Import ASE Folder Into Seperate Swatches (Browse...)")]
+        // [MenuItem("SOSXR/Swatchr/Import ASE Folder Into Seperate Swatches (Browse...)")]
         private static void ImportASEFolderIntoMany()
         {
             var path = EditorUtility.OpenFolderPanel("Swatchr Import Folder", "", "");
@@ -165,7 +165,7 @@ namespace swatchr
         }
 
 
-        [MenuItem("Assets/Swatchr/Import Swatch From Texture (Browse...)")]
+        // [MenuItem("SOSXR/Swatchr/Import Swatch From Texture (Browse...)")]
         public static void ImportSwatchFromTexture()
         {
             var path = EditorUtility.OpenFilePanel("Swatchr Import Texture", "", "png");
@@ -195,7 +195,7 @@ namespace swatchr
         }
 
 
-        [MenuItem("Assets/Swatchr/Export Swatch To Texture")]
+        // [MenuItem("SOSXR/Swatchr/Export Swatch To Texture")]
         public static void ExportSwatchToTexture()
         {
             var selectedSwatch = (Swatch) Selection.activeObject;
@@ -206,7 +206,7 @@ namespace swatchr
         }
 
 
-        [MenuItem("Assets/Swatchr/Export Swatch To Texture", true)]
+        // [MenuItem("SOSXR/Swatchr/Export Swatch To Texture", true)]
         public static bool ExportSwatchToTexture_Validate()
         {
             var activeObject = Selection.activeObject;

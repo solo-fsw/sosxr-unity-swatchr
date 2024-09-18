@@ -13,10 +13,10 @@ namespace swatchr
         public Color[] colors;
 
         [NonSerialized]
-        private Texture2D texture = null;
+        private readonly FastSmartWeakEvent<EventHandler> _event = new();
 
         [NonSerialized]
-        private readonly FastSmartWeakEvent<EventHandler> _event = new();
+        private Texture2D texture = null;
         public int numColors => colors?.Length ?? 0;
 
         public Texture2D cachedTexture
