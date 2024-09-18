@@ -1,64 +1,92 @@
-﻿using UnityEngine;
+using System;
+using Unity.VisualScripting.YamlDotNet.Serialization.ObjectGraphVisitors;
+using UnityEngine;
 using UnityEngine.Rendering;
 
 
 namespace swatchr
 {
+    /// <summary>
+    ///     SOSXR
+    /// </summary>
     [ExecuteInEditMode]
-    public class SwatchrAmbientTriLightingColor : MonoBehaviour
+    public class SwatchrAmbientTriLightingColor : SwatchrColorApplier
     {
-        [Header("Warning: This component changes scene settings in Lighting->Scene")]
-        public SwatchrColor sky;
-        public SwatchrColor equator;
-        public SwatchrColor ground;
+        public int skyColorIndex = 0;
+        public int equatorColorIndex = 1;
+        public int groundColorIndex = 2;
+
+        [HideInInspector]
+        public Color[] swatchColors = Array.Empty<Color>();
 
 
         private void OnDestroy()
         {
-            sky.OnColorChanged -= Apply;
-            equator.OnColorChanged -= Apply;
-            ground.OnColorChanged -= Apply;
+            if (swatchrColor != null)
+            {
+                swatchrColor.OnColorChanged -= Apply;
+            }
         }
 
 
         private void OnDisable()
         {
-            sky.OnColorChanged -= Apply;
-            equator.OnColorChanged -= Apply;
-            ground.OnColorChanged -= Apply;
+            if (swatchrColor != null)
+            {
+                swatchrColor.OnColorChanged -= Apply;
+            }
         }
 
 
         private void OnEnable()
         {
-            sky ??= new SwatchrColor();
+            swatchrColor ??= new SwatchrColor();
 
-            equator ??= new SwatchrColor();
-
-            ground ??= new SwatchrColor();
-
-            sky.OnColorChanged += Apply;
-            sky.OnEnable();
-
-            equator.OnColorChanged += Apply;
-            equator.OnEnable();
-
-            ground.OnColorChanged += Apply;
-            ground.OnEnable();
+            if (swatchrColor != null)
+            {
+                swatchrColor.OnColorChanged += UpdateSwatchColors;
+                swatchrColor.OnEnable();
+                UpdateSwatchColors();
+            }
         }
 
 
-        public void Apply()
+        private void UpdateSwatchColors()
         {
+            // Assuming SwatchrColor has a property or method to get the colors
+            swatchColors = swatchrColor.swatch.colors;
+            Apply();
+        }
+
+
+        protected override void Apply()
+        {
+            var singleAmbientLightColor = FindObjectOfType<SwatchrAmbientLightColor>();
+            if (singleAmbientLightColor != null && singleAmbientLightColor.enabled)
+            {
+                Debug.LogWarning("[SwatchrAmbientTriLightingColor] SwatchrAmbientLightColor is present in the scene. These two cannot co-exist in the same scene. Disabling the other one");
+                singleAmbientLightColor.gameObject.SetActive(false);
+            }
+            
             if (RenderSettings.ambientMode != AmbientMode.Trilight)
             {
-                Debug.LogWarning("[SwatchrAmbientTryLightingColor] RenderSettings.ambientMode != Trilight. Changing the setting to Tri Lighting. Change it manually in Lighting->Scene.");
                 RenderSettings.ambientMode = AmbientMode.Trilight;
             }
 
-            RenderSettings.ambientSkyColor = sky.color;
-            RenderSettings.ambientEquatorColor = equator.color;
-            RenderSettings.ambientGroundColor = ground.color;
+            RenderSettings.ambientSkyColor = GetColor(skyColorIndex);
+            RenderSettings.ambientEquatorColor = GetColor(equatorColorIndex);
+            RenderSettings.ambientGroundColor = GetColor(groundColorIndex);
+        }
+
+
+        private Color GetColor(int index)
+        {
+            if (swatchColors != null && index >= 0 && index < swatchColors.Length)
+            {
+                return swatchColors[index];
+            }
+
+            return Color.black; // Default to black if out of range
         }
     }
 }
