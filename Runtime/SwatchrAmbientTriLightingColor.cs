@@ -47,6 +47,7 @@ namespace swatchr
             }
 
             Debug.Log("[SwatchrAmbientTriLightingColor] Color index out of range");
+
             return Color.black; // Default to black if out of range
         }
     }

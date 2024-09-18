@@ -16,7 +16,7 @@ namespace swatchr
             {
                 swatchingCamera = GetComponent<Camera>();
             }
-            
+
             swatchingCamera.clearFlags = CameraClearFlags.SolidColor;
             swatchingCamera.backgroundColor = swatchrColor.color;
         }
