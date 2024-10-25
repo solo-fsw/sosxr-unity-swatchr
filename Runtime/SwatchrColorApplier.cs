@@ -18,7 +18,7 @@ namespace swatchr
         {
             if (swatchrColor == null)
             {
-                AssignDefaultSwatch();
+                // AssignDefaultSwatch();
             }
 
             if (swatchrColor != null)
