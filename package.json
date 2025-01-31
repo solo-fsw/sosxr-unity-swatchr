@@ -1,6 +1,6 @@
 {
   "name": "com.jknight.swatchr",
-  "version": "1.0.1",
+  "version": "1.1.1",
   "displayName": "Swatchr",
   "description": "A simple color swatch tool for Unity.",
   "unity": "2021.3",
@@ -12,6 +12,11 @@
     "Swatch",
     "Tool"
   ],
+  "samples": [ {
+    "displayName": "Samples",
+    "description": "Contains samples of this package",
+    "path": "Samples-/Samples"
+  } ],
   "author": {
     "name": "jknightdoeswork",
     "url": "https://github.com/jknightdoeswork/swatchr"
