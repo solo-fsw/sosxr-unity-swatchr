@@ -238,6 +238,12 @@ namespace swatchr
                 EditorUtility.SetDirty(swatch);
                 AssetDatabase.SaveAssets();
             }
+
+            // I want to store the url where I found the original color palette
+            GUILayout.BeginHorizontal();
+            EditorGUILayout.LabelField("Source URL", EditorStyles.boldLabel);
+            swatch.SourceURL = EditorGUILayout.TextField(swatch.SourceURL);
+            GUILayout.EndHorizontal();
         }
 
 

@@ -18,14 +18,11 @@ namespace swatchr
         {
             if (swatchrColor == null)
             {
-                // AssignDefaultSwatch();
+                return;
             }
 
-            if (swatchrColor != null)
-            {
-                swatchrColor.OnColorChanged += Apply;
-                swatchrColor.OnEnable();
-            }
+            swatchrColor.OnColorChanged += Apply;
+            swatchrColor.OnEnable();
         }
 
 

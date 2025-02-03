@@ -2,6 +2,7 @@
 using SmartWeakEvent;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 
 //https://www.codeproject.com/Articles/29922/Weak-Events-in-C#heading0002
@@ -32,6 +33,7 @@ namespace swatchr
             }
         }
 
+        [FormerlySerializedAs("URL")] public string SourceURL;
 
         public void RegenerateTexture()
         {

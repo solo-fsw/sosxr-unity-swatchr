@@ -8,7 +8,41 @@ namespace swatchr
 {
     public static class SwatchCreator
     {
+        [MenuItem("SOSXR/Create Project Wide Swatch")]
+        [MenuItem("Assets/Create/SOSXR/Create Project Wide Swatch")]
+        public static void CreateProjectWideSwatch()
+        {
+            var resourcePath = "Project Wide Swatch"; // Path for Resources.Load (without "Resources/" and without ".asset")
+            var assetPath = "Assets/_SOSXR/swatchr/Resources/Project Wide Swatch.asset"; // Full path for AssetDatabase
+
+            var existingSwatch = Resources.Load<Swatch>(resourcePath);
+
+            if (existingSwatch != null)
+            {
+                if (!EditorUtility.DisplayDialog("Overwrite Project Wide Swatch?",
+                        "A Project Wide Swatch already exists. Do you want to overwrite it?", "Yes", "No"))
+                {
+                    return;
+                }
+
+                AssetDatabase.DeleteAsset(AssetDatabase.GetAssetPath(existingSwatch));
+            }
+
+            var newSwatch = ScriptableObject.CreateInstance<Swatch>();
+
+            if (!Directory.Exists(Path.GetDirectoryName(assetPath)))
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(assetPath));
+            }
+
+            AssetDatabase.CreateAsset(newSwatch, assetPath);
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
+        }
+
+
         [MenuItem("SOSXR/Create New Swatch")]
+        [MenuItem("Assets/Create/SOSXR/Create New Swatch")]
         public static void CreateSwatch()
         {
             var asset = ScriptableObject.CreateInstance<Swatch>();
