@@ -13,6 +13,8 @@ namespace swatchr
     {
         public Color[] colors;
 
+        [FormerlySerializedAs("URL")] public string SourceURL;
+
         [NonSerialized]
         private readonly FastSmartWeakEvent<EventHandler> _event = new();
 
@@ -33,7 +35,6 @@ namespace swatchr
             }
         }
 
-        [FormerlySerializedAs("URL")] public string SourceURL;
 
         public void RegenerateTexture()
         {
